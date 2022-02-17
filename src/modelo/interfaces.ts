@@ -1,8 +1,9 @@
 
 export interface IProductos {
     author: IAuthor,
-    categories: string[],
-    items: IItem[]
+    categories?: string[],
+    items?: IItem[],
+    item?: IItem
 }
 
 interface IAuthor {
@@ -10,13 +11,15 @@ interface IAuthor {
     lastName: string
 }
 
-interface IItem {
+export interface IItem {
     id: string,
     title: string,
     price: IPrice,
     picture: string,
     condition: string,
-    free_shipping: boolean
+    free_shipping: boolean,
+    sold_quantity?: number,
+    description?: string
 }
 
 interface IPrice {

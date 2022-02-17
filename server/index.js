@@ -11,8 +11,20 @@ app.get('/', (req, res) => {
     res.send("<h1>Home page</h1>");
 });
 
-app.get('/search-description', (req, res) => {
+app.get('/search', (req, res) => {
     axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${req.query.query}`).then(response => {
+        res.send(response.data)
+    });
+});
+
+app.get('/search-item', (req, res) => {
+    axios.get(`https://api.mercadolibre.com/items/${req.query.id}`).then(response => {
+        res.send(response.data)
+    });
+});
+
+app.get('/search-description', (req, res) => {
+    axios.get(`https://api.mercadolibre.com/items/${req.query.id}/description`).then(response => {
         res.send(response.data)
     });
 });
