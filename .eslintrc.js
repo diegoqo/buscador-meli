@@ -28,6 +28,7 @@ module.exports = {
         "no-nested-ternary":0,
         "no-console": 1,
         "no-case-declarations":0,
-        "import/prefer-default-export":0
+        "import/prefer-default-export":0,
+        "react / forbid-prop-types":0
     }
 }

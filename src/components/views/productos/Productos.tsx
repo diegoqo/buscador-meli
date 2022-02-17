@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import CajaBusqueda from '../../cajabusqueda/CajaBusqueda';
 
 
 function useQuery(queryParam: string) {
@@ -9,12 +10,11 @@ function useQuery(queryParam: string) {
 }
 
 const Productos = () => {
-    const test = useQuery('search');
-    console.log(test);
+    const query = useQuery('search');
     return(
         <>
             <div>Hola soy Productos</div>
-            <input/>
+            <CajaBusqueda />
         </>
 
     );
