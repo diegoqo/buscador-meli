@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/search-description', (req, res) => {
-    axios.get('https://api.mercadolibre.com/items/MLA920005366/description').then(response => {
+    axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${req.query.query}`).then(response => {
         res.send(response.data)
     });
 });
@@ -22,4 +22,4 @@ app.post("/post", (req, res) => {
     res.redirect("/");
 });
 
-app.listen(8080, console.log('Server started on port 8080'));
+app.listen(8080, () => console.log('Server started on port 8080'));
