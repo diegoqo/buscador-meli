@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import CajaBusqueda from '../../cajabusqueda/CajaBusqueda';
 import axios from 'axios';
 import { IProductos, IResponseQuery } from '../../../modelo/interfaces';
 import MigaDePan from '../../migadepan/MigaDePan';
-import { Box, ButtonBase, IconButton, InputBase, Paper, Grid, Typography } from '@mui/material';
+import { Box, Grid, Paper, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import './Productos.scss'
 
@@ -97,7 +97,7 @@ const Productos = () => {
                                                 theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                                         }}
                                         key={`${it.id}-paper`}
-                                    ><a className={'href_grid'} onClick={() => handleDetail(it.id)} key={`${it.id}-a`}>
+                                    ><a className={'href-grid'} onClick={() => handleDetail(it.id)} key={`${it.id}-a`}>
                                         <Grid container spacing={2} key={`${it.id}-grid-img-container`}>
                                             <Grid item sx={{width: 128, height: 128}} key={`${it.id}-grid-img`}>
                                                 <Img alt="complex" src={it.picture} key={`${it.id}-img`}/>

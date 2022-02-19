@@ -4,7 +4,17 @@ import CajaBusqueda from '../../cajabusqueda/CajaBusqueda';
 import axios from 'axios';
 import { ICategorias, IProductos } from '../../../modelo/interfaces';
 import MigaDePan from '../../migadepan/MigaDePan';
+import { Box, Button, Grid, Paper, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import './Detalle.scss'
 
+const Item = styled(Paper)(({theme}) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+}));
 
 const Detalle = () => {
     const {id} = useParams();
@@ -26,7 +36,6 @@ const Detalle = () => {
         axios.get('http://localhost:8080/search-item', {
             params: {id: id}
         }).then(response => {
-                console.log(response);
                 return {
                     author: {
                         name: 'Diego',
@@ -65,7 +74,7 @@ const Detalle = () => {
                     : [];
                 const categoriaEncontrada = categoriasLst.length > 0 ? categoriasLst?.find(cat => cat.id === productoConDescripcion?.item?.category) : null;
 
-                if(categoriaEncontrada) {
+                if (categoriaEncontrada) {
                     setCategorias([categoriaEncontrada, {
                         id: productoConDescripcion.item.id,
                         nombre: productoConDescripcion.item.title
@@ -79,16 +88,52 @@ const Detalle = () => {
 
     return (
         <>
-            <div>Hola soy detalle</div>
-            <CajaBusqueda/>
-            <p>id es: {id}</p>{
-            productoDetalle !== undefined &&
-            <>
-                {categorias?.length > 0 && <MigaDePan categorias={categorias}/>}
-                <p>la imagen es: <img src={productoDetalle?.item?.picture}/></p>
-                <p>La descripción es: {productoDetalle?.item?.description}</p>
-            </>
-        }
+            <Box>
+                <CajaBusqueda/>
+                {
+                    productoDetalle !== undefined &&
+                    <>
+                        {categorias?.length > 0 && <Box sx={{m: 2}}><MigaDePan categorias={categorias}/></Box>}
+                        <Box sx={{m: 2, backgroundColor: '#ededed'}}>
+                            <Grid container sx={{height: '100%'}} spacing={2}>
+                                <Grid sx={{height: 'auto'}} item xs={7}>
+                                    <Item><img className={'img-detalle'}
+                                               src={productoDetalle?.item?.picture}/>
+                                        <Box sx={{textAlign: 'left'}}>
+                                            <p>
+                                                <h1>Descripción del producto</h1>
+                                            </p>
+                                            <Box>
+                                                <Typography variant="body2" color="text.secondary"
+                                                            key={`${productoDetalle.item?.id}-grid-typo-shipp`}>
+                                                    {productoDetalle.item?.description}
+                                                </Typography>
+                                            </Box>
+                                        </Box>
+                                    </Item>
+
+                                </Grid>
+                                <Grid sx={{height: 'auto'}} item xs>
+                                    <Item sx={{height: 400}}>
+                                        <Box sx={{mt: 4, ml: 2}}>
+                                            <Box
+                                                sx={{textAlign: 'left'}}>{`${productoDetalle.item?.condition} - ${productoDetalle.item?.sold_quantity} vendidos`}</Box>
+                                            <Box sx={{textAlign: 'left'}}><h3>{productoDetalle.item?.title}</h3></Box>
+                                            <Box sx={{textAlign: 'left'}}>
+                                                <h1>{productoDetalle.item !== undefined && productoDetalle.item?.price !== undefined && Intl.NumberFormat('es-AR', {
+                                                    style: 'currency',
+                                                    currency: productoDetalle.item?.price.currency
+                                                }).format(productoDetalle.item?.price.amount)}</h1></Box>
+                                            <Box sx={{textAlign: 'center'}}><Button variant="contained"
+                                                                                    onClick={() => alert('Todo: Carrito de compras :)')}>Comprar</Button></Box>
+                                        </Box>
+                                    </Item>
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </>
+                }
+            </Box>
         </>
 
     );
