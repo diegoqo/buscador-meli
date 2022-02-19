@@ -1,9 +1,14 @@
 
 export interface IProductos {
     author: IAuthor,
-    categories?: string[],
+    categories?: ICategorias[],
     items?: IItem[],
     item?: IItem
+}
+
+export interface ICategorias {
+    id: string,
+    nombre: string
 }
 
 interface IAuthor {
@@ -19,13 +24,14 @@ export interface IItem {
     condition: string,
     free_shipping: boolean,
     sold_quantity?: number,
-    description?: string
+    description?: string,
+    category?: string,
 }
 
 interface IPrice {
     currency: string,
     amount: number,
-    decimals?: number
+    decimals?: string
 }
 
 export interface IResponseQuery {

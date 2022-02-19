@@ -1,10 +1,10 @@
 import React, { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'prop-types';
-import { IProductos, IResponseQuery } from '../../modelo/interfaces';
+import './CajaBusqueda.scss'
+import { Box } from '@mui/material';
 
-const CajaBusqueda = ({defaultQuery= ""}) => {
+const CajaBusqueda = ({defaultQuery = ""}) => {
 
     const [query, setQuery] = useState(defaultQuery);
     const navigate = useNavigate();
@@ -18,19 +18,18 @@ const CajaBusqueda = ({defaultQuery= ""}) => {
         navigate(`/items?search=${query}`);
     }
 
-    return(
-        <div>
-            <div>Hola soy buscador</div>
-            <form onSubmit={handleSubmit}>
+    return (
+        <Box display={'flex'} p={1}>
+            <Box p={1} flexShrink={1}><a className="nav-logo" href="/" tabIndex={0} /></Box>
+            <Box p={1} width={'90%'}><form onSubmit={handleSubmit}>
                 <input
                     type={'text'}
                     value={query}
                     onChange={onChange}
                 />
                 <button type={'submit'}>Buscar</button>
-            </form>
-
-        </div>
+            </form></Box>
+        </Box>
 
     );
 }
