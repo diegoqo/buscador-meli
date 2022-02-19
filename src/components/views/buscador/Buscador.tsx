@@ -13,9 +13,9 @@ const Buscador = () => {
 
 
     return(
-        <div>
+        <>
             <CajaBusqueda />
-        </div>
+        </>
 
 );
 }

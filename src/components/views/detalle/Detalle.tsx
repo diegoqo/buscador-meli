@@ -59,8 +59,11 @@ const Detalle = () => {
                         description: responseDescription?.data?.plain_text,
                     }
                 };
-                const categoriasLst: ICategorias[] = Array.from(JSON.parse(localStorage.getItem('categorias')!));
-                const categoriaEncontrada = categoriasLst?.find(cat => cat.id === productoConDescripcion?.item?.category);
+                const categoriasLocalStorage = localStorage.getItem('categorias');
+                const categoriasLst: ICategorias[] = categoriasLocalStorage !== 'undefined' && categoriasLocalStorage !== null
+                    ? Array.from(JSON.parse(categoriasLocalStorage))
+                    : [];
+                const categoriaEncontrada = categoriasLst.length > 0 ? categoriasLst?.find(cat => cat.id === productoConDescripcion?.item?.category) : null;
 
                 if(categoriaEncontrada) {
                     setCategorias([categoriaEncontrada, {

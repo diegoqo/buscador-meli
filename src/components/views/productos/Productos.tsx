@@ -4,16 +4,12 @@ import CajaBusqueda from '../../cajabusqueda/CajaBusqueda';
 import axios from 'axios';
 import { IProductos, IResponseQuery } from '../../../modelo/interfaces';
 import MigaDePan from '../../migadepan/MigaDePan';
-
-
-function useQuery(queryParam: string) {
-    const [searchParams] = useSearchParams();
-
-    return useMemo(() => searchParams.get(queryParam), [queryParam]);
-}
+import { Box } from '@mui/material';
 
 const Productos = () => {
-    const query = useQuery('search');
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('search');
+    console.log('query es: ' + query)
     const [results, setResults] = useState<IProductos>();
     const navigate = useNavigate();
 
@@ -71,13 +67,12 @@ const Productos = () => {
     }
 
     return (
-        <>
-            <div>Hola soy Productos</div>
+        <Box>
             <CajaBusqueda defaultQuery={query || ''}/>
             {results !== undefined && results.items && results.items?.length > 0 && results.items?.length > 0 &&
                 <>
                     {results?.categories !== undefined && results?.categories?.length > 0 &&
-                        <MigaDePan categorias={results?.categories}/>}
+                        <Box sx={{ml: 3, mt: 2}}><MigaDePan categorias={results?.categories}/></Box>}
                     {results?.items.slice(0, 4).map(it =>
                         <>
                             <a onClick={() => handleDetail(it.id)}>
@@ -86,7 +81,7 @@ const Productos = () => {
                         </>
                     )}
                 </>}
-        </>
+        </Box>
 
     );
 }

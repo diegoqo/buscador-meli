@@ -12,9 +12,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
-    axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${req.query.query}`).then(response => {
+    axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${encodeURI(req.query.query)}`).then(response => {
         res.send(response.data)
-    });
+    }).catch(error => console.error('Ocurrio un error en la consulta de productos: ', error));
 });
 
 app.get('/search-item', (req, res) => {
