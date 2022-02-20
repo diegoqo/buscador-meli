@@ -3,7 +3,6 @@
   "buildDirectory": "./build",
   "routes": [
     "/",
-    "/items",
-    "/items/%s"
+    "/items"
   ]
 }
