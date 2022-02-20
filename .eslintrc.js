@@ -30,6 +30,7 @@ module.exports = {
         "no-case-declarations":0,
         "import/prefer-default-export":0,
         "react / forbid-prop-types":0,
-        "@typescript-eslint/no-var-requires":0
+        "@typescript-eslint/no-var-requires":0,
+        "react/react-in-jsx-scope":0
     }
 }

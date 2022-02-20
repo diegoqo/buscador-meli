@@ -47,7 +47,9 @@ const Detalle = () => {
     useEffect(() => {
         const productoConDescripcion: IProductos = ConstructorProductoDetalle2(R.pathOr([], [], productoDetalle1), R.pathOr([], [], responseDetalle2));
         const categoriasLocalStorage = localStorage.getItem('categorias');
-        const categoriasLst: ICategorias[] = Array.from(JSON.parse(R.pathOr([], [], categoriasLocalStorage)));
+        const categoriasLst: ICategorias[] = R.pathOr([], [], categoriasLocalStorage).length > 0
+            ? Array.from(JSON.parse(R.pathOr([], [], categoriasLocalStorage)))
+            : [];
         const categoriaEncontrada = R.find(R.propEq('id', productoConDescripcion?.item?.category))(categoriasLst);
 
         if (categoriaEncontrada) {
@@ -62,7 +64,7 @@ const Detalle = () => {
 
     return (
         <><Helmet>
-            <title>Home page</title>
+            <title>Detalle</title>
             <meta name="description" content="Página de detalle de producto" />
             <meta name="robots" content="INDEX,FOLLOW" />
         </Helmet>

@@ -40,6 +40,7 @@ const CajaBusqueda = ({defaultQuery = ""}) => {
                         placeholder="Buscar productos, marcas y más..."
                         onChange={onChange}
                         value={query}
+                        data-testid={'input-busqueda'}
                     />
                     <IconButton type="submit" sx={{p: '10px'}} aria-label="search">
                         <SearchIcon/>

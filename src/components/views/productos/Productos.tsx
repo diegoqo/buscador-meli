@@ -51,7 +51,7 @@ const Productos = () => {
     return (
         <Box>
             <Helmet>
-                <title>Home page</title>
+                <title>Productos</title>
                 <meta name="description" content="Página de productos" />
                 <meta name="robots" content="INDEX,FOLLOW" />
             </Helmet>
@@ -105,7 +105,6 @@ const Productos = () => {
                         </>
                     )}
                 </>}
-            {!results && <Box><h3>No se encontraron resultados</h3></Box>}
         </Box>
     );
 }
