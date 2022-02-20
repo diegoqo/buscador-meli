@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CajaBusqueda from '../../cajabusqueda/CajaBusqueda';
-import axios from 'axios';
+import CajaBusqueda from '../../common/cajabusqueda/CajaBusqueda';
 import { ICategorias, IProductos } from '../../../modelo/interfaces';
-import MigaDePan from '../../migadepan/MigaDePan';
+import MigaDePan from '../../common/migadepan/MigaDePan';
 import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import './Detalle.scss'
+import useFetchData from '../../../hooks/useFetchData';
+import { ConstructorProductoDetalle1, ConstructorProductoDetalle2 } from '../../../utils/ConstructoresInterfaces';
+import { FormatearPrecio } from '../../../utils/Formateador';
+
+const R = require('ramda');
 
 const Item = styled(Paper)(({theme}) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -19,72 +23,40 @@ const Item = styled(Paper)(({theme}) => ({
 const Detalle = () => {
     const {id} = useParams();
     const [categorias, setCategorias] = useState<ICategorias[]>([]);
+    const [productoDetalle1, setProductoDetalle1] = useState<IProductos>();
     const [productoDetalle, setProductoDetalle] = useState<IProductos>();
 
-    const calcularDecimal = (amount: number) => {
-        const amountSplit: string[] = amount.toString().split('.');
-        return amountSplit.length > 1
-            ? validarDecimal(amountSplit[1])
-            : '00'
-    }
+    const {
+        response: responseDetalle1
+    } = useFetchData('http://localhost:8080/search-item', {id: id});
 
-    const validarDecimal = (decimal: string) => {
-        return (decimal.length == 1 ? decimal.concat('0') : decimal).substring(0, 1);
-    }
+    const {
+        response: responseDetalle2
+    } = useFetchData('http://localhost:8080/search-description', {id: id});
 
     useEffect(() => {
-        axios.get('http://localhost:8080/search-item', {
-            params: {id: id}
-        }).then(response => {
-                return {
-                    author: {
-                        name: 'Diego',
-                        lastName: 'Quevedo'
-                    },
-                    item: {
-                        id: response.data?.id,
-                        title: response.data?.title,
-                        picture: response.data?.thumbnail,
-                        condition: response.data?.condition,
-                        free_shipping: response.data?.shipping?.free_shipping,
-                        sold_quantity: response.data?.sold_quantity,
-                        category: response.data?.category_id,
-                        price: {
-                            currency: response.data.currency_id,
-                            amount: response.data.price,
-                            decimals: calcularDecimal(response.data.price)
-                        }
-                    }
-                };
-            }
-        ).then(resultadoConsulta1 => {
-            axios.get('http://localhost:8080/search-description', {
-                params: {id: id}
-            }).then(responseDescription => {
-                const productoConDescripcion = {
-                    ...resultadoConsulta1,
-                    item: {
-                        ...resultadoConsulta1.item,
-                        description: responseDescription?.data?.plain_text,
-                    }
-                };
-                const categoriasLocalStorage = localStorage.getItem('categorias');
-                const categoriasLst: ICategorias[] = categoriasLocalStorage !== 'undefined' && categoriasLocalStorage !== null
-                    ? Array.from(JSON.parse(categoriasLocalStorage))
-                    : [];
-                const categoriaEncontrada = categoriasLst.length > 0 ? categoriasLst?.find(cat => cat.id === productoConDescripcion?.item?.category) : null;
+        if (responseDetalle1) {
+            const detalle1: IProductos = ConstructorProductoDetalle1(responseDetalle1);
+            setProductoDetalle1(detalle1);
+        }
 
-                if (categoriaEncontrada) {
-                    setCategorias([categoriaEncontrada, {
-                        id: productoConDescripcion.item.id,
-                        nombre: productoConDescripcion.item.title
-                    }]);
-                }
-                setProductoDetalle(productoConDescripcion);
-            })
-        })
+    }, [responseDetalle1]);
 
-    }, [id]);
+    useEffect(() => {
+        const productoConDescripcion: IProductos = ConstructorProductoDetalle2(R.pathOr([], [], productoDetalle1), R.pathOr([], [], responseDetalle2));
+        const categoriasLocalStorage = localStorage.getItem('categorias');
+        const categoriasLst: ICategorias[] = Array.from(JSON.parse(R.pathOr([], [], categoriasLocalStorage)));
+        const categoriaEncontrada = R.find(R.propEq('id', productoConDescripcion?.item?.category))(categoriasLst);
+
+        if (categoriaEncontrada) {
+            setCategorias([categoriaEncontrada, {
+                id: R.pathOr('', ['item', 'id'], productoConDescripcion),
+                nombre: R.pathOr('', ['item', 'title'], productoConDescripcion),
+            }]);
+        }
+        setProductoDetalle(productoConDescripcion);
+    }, [productoDetalle1]);
+
 
     return (
         <>
@@ -93,16 +65,15 @@ const Detalle = () => {
                 {
                     productoDetalle !== undefined &&
                     <>
-                        {categorias?.length > 0 && <Box sx={{m: 2}}><MigaDePan categorias={categorias}/></Box>}
-                        <Box sx={{m: 2, backgroundColor: '#ededed'}}>
-                            <Grid container sx={{height: '100%'}} spacing={2}>
-                                <Grid sx={{height: 'auto'}} item xs={7}>
+                        {categorias?.length > 0 &&
+                            <Box className={'container-miga'}><MigaDePan categorias={categorias}/></Box>}
+                        <Box className={'container-producto'}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={7}>
                                     <Item><img className={'img-detalle'}
                                                src={productoDetalle?.item?.picture}/>
-                                        <Box sx={{textAlign: 'left'}}>
-                                            <p>
-                                                <h1>Descripción del producto</h1>
-                                            </p>
+                                        <Box className={'container-descripcion'}>
+                                            <h1>Descripción del producto</h1>
                                             <Box>
                                                 <Typography variant="body2" color="text.secondary"
                                                             key={`${productoDetalle.item?.id}-grid-typo-shipp`}>
@@ -113,18 +84,20 @@ const Detalle = () => {
                                     </Item>
 
                                 </Grid>
-                                <Grid sx={{height: 'auto'}} item xs>
-                                    <Item sx={{height: 400}}>
-                                        <Box sx={{mt: 4, ml: 2}}>
+                                <Grid item xs>
+                                    <Item className={'container-item-comprar'}>
+                                        <Box className={'container-comprar'}>
                                             <Box
-                                                sx={{textAlign: 'left'}}>{`${productoDetalle.item?.condition} - ${productoDetalle.item?.sold_quantity} vendidos`}</Box>
-                                            <Box sx={{textAlign: 'left'}}><h3>{productoDetalle.item?.title}</h3></Box>
-                                            <Box sx={{textAlign: 'left'}}>
-                                                <h1>{productoDetalle.item !== undefined && productoDetalle.item?.price !== undefined && Intl.NumberFormat('es-AR', {
-                                                    style: 'currency',
-                                                    currency: productoDetalle.item?.price.currency
-                                                }).format(productoDetalle.item?.price.amount)}</h1></Box>
-                                            <Box sx={{textAlign: 'center'}}><Button variant="contained"
+                                                className={'container-items-comprar'}>{`${R.pathOr('Condición no disponible', ['item', 'condition'], productoDetalle)} - ${R.pathOr('No disponible número de', ['item', 'sold_quantity'], productoDetalle)} vendidos`}</Box>
+                                            <Box className={'container-items-comprar'}>
+                                                <h3>{R.pathOr('Título no disponible', ['item', 'title'], productoDetalle)}</h3></Box>
+                                            <Box className={'container-items-comprar'}>
+                                                <h1>{R.pathOr(undefined, ['item', 'price'], productoDetalle) !== undefined
+                                                    && FormatearPrecio(R.pathOr('ARS', ['item', 'price', 'curremcy'], productoDetalle),
+                                                        R.pathOr(0, ['item', 'price', 'amount'], productoDetalle))}
+                                                </h1>
+                                            </Box>
+                                            <Box className={'container-button-comprar'}><Button variant="contained"
                                                                                     onClick={() => alert('Todo: Carrito de compras :)')}>Comprar</Button></Box>
                                         </Box>
                                     </Item>

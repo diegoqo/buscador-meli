@@ -1,8 +1,5 @@
-import React, { FormEvent, useEffect, useState } from 'react';
-import CajaBusqueda from '../../cajabusqueda/CajaBusqueda';
-import { IProductos, IResponseQuery } from '../../../modelo/interfaces';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import CajaBusqueda from '../../common/cajabusqueda/CajaBusqueda';
 
 
 const Buscador = () => {
@@ -14,12 +11,11 @@ const Buscador = () => {
 
     return(
         <>
-            <CajaBusqueda />
+            <CajaBusqueda key={'caja-busqueda'} />
         </>
 
 );
 }
-
 
 export default Buscador;
 

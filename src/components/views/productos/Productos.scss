@@ -1,3 +1,29 @@
 .href-grid {
   cursor: pointer;
 }
+
+.container-miga {
+  margin-left: 24px;
+  margin-top: 16px;
+}
+
+.container-grilla {
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  padding: 16px;
+  margin: 16px auto auto;
+  min-width: 400px;
+  max-width: 600px;
+  background-color: #fff;
+}
+
+.container-img-producto {
+  width: 128px;
+  height: 128px;
+}
+
+.container-desc-prod {
+  text-align: left;
+}

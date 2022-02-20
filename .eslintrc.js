@@ -29,6 +29,7 @@ module.exports = {
         "no-console": 1,
         "no-case-declarations":0,
         "import/prefer-default-export":0,
-        "react / forbid-prop-types":0
+        "react / forbid-prop-types":0,
+        '@typescript-eslint/no-var-requires': 0,
     }
 }

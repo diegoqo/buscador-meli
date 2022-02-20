@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import PropTypes from 'prop-types';
-import { ICategorias } from '../../modelo/interfaces';
+import { ICategorias } from '../../../modelo/interfaces';
 
 const MigaDePan = ({categorias} : {categorias: ICategorias[]}) => {
 
