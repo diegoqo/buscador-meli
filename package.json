@@ -24,6 +24,7 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-helmet": "^6.1.0",
     "sass": "^1.49.7",
     "typescript": "^4.5.5",
     "web-vitals": "^2.1.4"
@@ -34,7 +35,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .tsx",
-    "start-server": "nodemon server/index.js"
+    "start-server": "nodemon server/index.js",
+    "postbuild": "react-spa-prerender"
   },
   "eslintConfig": {
     "extends": [
@@ -56,10 +58,12 @@
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.6",
+    "@types/react-helmet": "^6.1.5",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
     "eslint": "^8.9.0",
     "eslint-plugin-react": "^7.28.0",
+    "react-spa-prerender": "^1.0.14",
     "react-styleguidist": "^11.2.0",
     "webpack": "^5.69.0"
   }

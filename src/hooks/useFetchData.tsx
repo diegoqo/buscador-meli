@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IDataResponseQuery } from "../modelo/interfaces";
 
-const useFetchData = (url: string, paramsQuery = {}) => {
+const useFetchData = (url: string, paramsQuery = {}, query: string) => {
     const [response, setResponse] = useState<IDataResponseQuery>();
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const useFetchData = (url: string, paramsQuery = {}) => {
         };
 
         fetchData();
-    }, []);
+    }, [query]);
 
     return {
         response

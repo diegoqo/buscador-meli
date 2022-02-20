@@ -9,6 +9,7 @@ import './Detalle.scss'
 import useFetchData from '../../../hooks/useFetchData';
 import { ConstructorProductoDetalle1, ConstructorProductoDetalle2 } from '../../../utils/ConstructoresInterfaces';
 import { FormatearPrecio } from '../../../utils/Formateador';
+import Helmet from 'react-helmet';
 
 const R = require('ramda');
 
@@ -28,11 +29,11 @@ const Detalle = () => {
 
     const {
         response: responseDetalle1
-    } = useFetchData('http://localhost:8080/search-item', {id: id});
+    } = useFetchData('http://localhost:8080/search-item', {id: id}, R.pathOr('', [], id));
 
     const {
         response: responseDetalle2
-    } = useFetchData('http://localhost:8080/search-description', {id: id});
+    } = useFetchData('http://localhost:8080/search-description', {id: id}, R.pathOr('', [], id));
 
     useEffect(() => {
         if (responseDetalle1) {
@@ -59,7 +60,11 @@ const Detalle = () => {
 
 
     return (
-        <>
+        <><Helmet>
+            <title>Home page</title>
+            <meta name="description" content="Página de detalle de producto" />
+            <meta name="robots" content="INDEX,FOLLOW" />
+        </Helmet>
             <Box>
                 <CajaBusqueda/>
                 {

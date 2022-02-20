@@ -9,6 +9,7 @@ import './Productos.scss'
 import useFetchData from '../../../hooks/useFetchData';
 import { ConstructorProductos } from '../../../utils/ConstructoresInterfaces';
 import { FormatearPrecio } from '../../../utils/Formateador';
+import Helmet from 'react-helmet';
 
 const R = require('ramda');
 
@@ -28,16 +29,18 @@ const Productos = () => {
 
     const {
         response
-    } = useFetchData('http://localhost:8080/search', {query: query});
+    } = useFetchData('http://localhost:8080/search', {query: query}, R.pathOr('', [], query));
 
     useEffect(() => {
         const resultsApi: IProductos = ConstructorProductos(R.pathOr([], [], response));
+        if(R.pathOr([], ['results'], response).length > 0){
+            setResults(resultsApi);
+        }
+        else {
+            setResults(undefined)
+        }
         localStorage.setItem('categorias', JSON.stringify(resultsApi?.categories))
-        setTimeout(() => {
-            setResults(resultsApi)
-            setLoading(false)
-        }, 1000);
-
+        setLoading(false);
     }, [query, response]);
 
     const handleDetail = (idProducto: string) => {
@@ -46,9 +49,14 @@ const Productos = () => {
 
     return (
         <Box>
+            <Helmet>
+                <title>Home page</title>
+                <meta name="description" content="Página de productos" />
+                <meta name="robots" content="INDEX,FOLLOW" />
+            </Helmet>
             <CajaBusqueda defaultQuery={R.pathOr('', [], query)}/>
             {loading && <Box>
-                <CircularProgress/>
+                <CircularProgress />
             </Box>}
             {R.pathOr([], ['items'], results).length > 0 &&
                 <>
@@ -96,6 +104,7 @@ const Productos = () => {
                         </>
                     )}
                 </>}
+            {!results && <Box><h3>No se encontraron resultados</h3></Box>}
         </Box>
     );
 }

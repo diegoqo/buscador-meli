@@ -1,5 +1,43 @@
 import React, { useEffect } from 'react';
 import CajaBusqueda from '../../common/cajabusqueda/CajaBusqueda';
+import Helmet from 'react-helmet';
+import { Box, Grid } from '@mui/material';
+import PropTypes from 'prop-types';
+import './Buscador.scss'
+
+const logo = require('../../../images/icon-services-fcs.png');
+
+function Item(props: { [x: string]: any; sx: any; }) {
+    const {sx, ...other} = props;
+    return (
+        <Box
+            sx={{
+                p: 1,
+                m: 1,
+                bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : 'grey.100'),
+                color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
+                border: '1px solid',
+                borderColor: (theme) =>
+                    theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+                borderRadius: 2,
+                fontSize: '0.875rem',
+                fontWeight: '700',
+                ...sx,
+            }}
+            {...other}
+        />
+    );
+}
+
+Item.propTypes = {
+    sx: PropTypes.oneOfType([
+        PropTypes.arrayOf(
+            PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool]),
+        ),
+        PropTypes.func,
+        PropTypes.object,
+    ]),
+};
 
 
 const Buscador = () => {
@@ -9,12 +47,37 @@ const Buscador = () => {
     }, []);
 
 
-    return(
-        <>
-            <CajaBusqueda key={'caja-busqueda'} />
-        </>
+    return (
+        <Box>
+            <><Helmet>
+                <title>Home page</title>
+                <meta name="description" content="Página de búsquedas"/>
+                <meta name="robots" content="INDEX,FOLLOW"/>
+            </Helmet>
+                <CajaBusqueda key={'caja-busqueda'}/>
+                <Box className={'container-info-busqueda'}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={4}><img className={'img-buscador'} src={logo}/></Grid>
+                        <Grid className={'container-desc-buscador'} item xs={8}><h3>Escribí en el buscador lo que querés encontrar.
+                        </h3>
+                            <ul>
+                                <li><strong>Escribí tu búsqueda</strong> en el campo que figura en la parte superior de la
+                                    pantalla.
+                                </li>
+                                <li><a href="/"> Navegá por categorías de productos</a> para encontrar el producto que
+                                    buscás.
+                                </li>
+                            </ul>
+                        </Grid>
+                    </Grid>
+                    <Box>
+                    </Box>
+                </Box>
+            </>
+        </Box>
 
-);
+
+    );
 }
 
 export default Buscador;

@@ -7,7 +7,7 @@ import Detalle from './components/views/detalle/Detalle';
 
 function App() {
     return (
-        <div className="App">
+        <div className="App" style={{width: '100%'}}>
             <Routes>
                 <Route path={'/'} element={<Buscador/>} key={'router-buscador'}/>
                 <Route path={'items'} element={<Productos/>} key={'router-productos'}/>

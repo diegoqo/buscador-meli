@@ -10,14 +10,10 @@ F
 src/react-app-env.d.ts,4/a/4a7b99bdbee5792679d347b6474463bf5e14b66d
 =
 tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
-=
-src/index.tsx,5/a/5ab44fe33ca96299f51ad4778a73e425b92bf439
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 A
 src/setupProxy.js,c/b/cbd9e2737defe43b734c82719102006adccf8ab6
-A
-public/index.html,f/4/f43ecdf8d666ee908aacce037b4cd72159e4741b
 V
 &src/components/migadepan/MigaDePan.tsx,d/a/da356b0c608ec07febeb71eb3277aac115dfb640
 A
