@@ -26,14 +26,15 @@ const Detalle = () => {
     const [categorias, setCategorias] = useState<ICategorias[]>([]);
     const [productoDetalle1, setProductoDetalle1] = useState<IProductos>();
     const [productoDetalle, setProductoDetalle] = useState<IProductos>();
+    const urlServer = process.env.REACT_APP_API_URL;
 
     const {
         response: responseDetalle1
-    } = useFetchData('http://localhost:8080/search-item', {id: id}, R.pathOr('', [], id));
+    } = useFetchData(`${urlServer}/search-item`, {id: id}, R.pathOr('', [], id));
 
     const {
         response: responseDetalle2
-    } = useFetchData('http://localhost:8080/search-description', {id: id}, R.pathOr('', [], id));
+    } = useFetchData(`${urlServer}/search-description`, {id: id}, R.pathOr('', [], id));
 
     useEffect(() => {
         if (responseDetalle1) {

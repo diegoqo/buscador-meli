@@ -26,10 +26,11 @@ const Productos = () => {
     const [results, setResults] = useState<IProductos>();
     const [loading, setLoading] = useState<boolean>(true);
     const navigate = useNavigate();
+    const urlServer = process.env.REACT_APP_API_URL;
 
     const {
         response
-    } = useFetchData('http://localhost:8080/search', {query: query}, R.pathOr('', [], query));
+    } = useFetchData(`${urlServer}/search`, {query: query}, R.pathOr('', [], query));
 
     useEffect(() => {
         const resultsApi: IProductos = ConstructorProductos(R.pathOr([], [], response));
