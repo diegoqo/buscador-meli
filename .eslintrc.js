@@ -26,10 +26,10 @@ module.exports = {
         "no-shadow":0,
         "consistent-return": 0,
         "no-nested-ternary":0,
-        "no-console": 1,
+        "no-console": 0,
         "no-case-declarations":0,
         "import/prefer-default-export":0,
         "react / forbid-prop-types":0,
-        '@typescript-eslint/no-var-requires': 0,
+        "@typescript-eslint/no-var-requires":0
     }
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { calcularDecimal } from './CalcularDecimal';
 import { IDataResponseQuery, IProductos, IResultsQuery } from '../modelo/interfaces';
 
@@ -39,7 +38,7 @@ export const ConstructorProductoDetalle2 = (productoDetalle1: IProductos, respon
     }
 }
 
-export const ConstructorCategorias = (ct: { id: any; name: any; }) => {
+export const ConstructorCategorias = (ct: { id: string; name: string; }) => {
     return {
         id: ct?.id,
         nombre: ct?.name

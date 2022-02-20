@@ -20,7 +20,5 @@ A
 public/index.html,f/4/f43ecdf8d666ee908aacce037b4cd72159e4741b
 V
 &src/components/migadepan/MigaDePan.tsx,d/a/da356b0c608ec07febeb71eb3277aac115dfb640
-<
-package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 A
 src/setupTests.ts,3/9/39129446b425a1d640160c068e4194e96639eedf

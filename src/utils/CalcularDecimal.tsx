@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const calcularDecimal = (amount: number) => {
     const amountSplit: string[] = amount.toString().split('.');
     return amountSplit.length > 1
