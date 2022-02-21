@@ -10,5 +10,3 @@ F
 src/react-app-env.d.ts,4/a/4a7b99bdbee5792679d347b6474463bf5e14b66d
 A
 src/setupProxy.js,c/b/cbd9e2737defe43b734c82719102006adccf8ab6
-V
-&src/components/migadepan/MigaDePan.tsx,d/a/da356b0c608ec07febeb71eb3277aac115dfb640

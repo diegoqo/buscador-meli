@@ -2,38 +2,11 @@
 
 Este proyecto fue creado con [Create React App](https://github.com/facebook/create-react-index).
 
-## Script disponibles
-
-Se puede ejecutar:
-
-### `npm start`
-
-Para iniciar la aplicación, corre por el puerto [http://localhost:3000](http://localhost:3000)
-
-### `npm test`
-
-Corre los test configurados en el proyecto.
-
-### `npm run build`
-
-Realiza el empaquetado de la aplicación en la carpeta `build` para desplegar en ambiente productivo.
-
-### `npm run lint`
-
-Se ejecuta el analisis estético del código con la herramienta EsLint.
-
-### `npm run start-server`
-
-Se levanta el servidor configurado con Express 
-
-### `npm run postbuild`
-
-Renderiza previamente páginas estáticas para optimizar SEO con react-spa-prerender
-
 ## Como levantar la aplicación
 
-1. Ejecutar el comando `npm run start-server`, el cual levanta el servidor express por el puerto 8080.
-2. Ejecutar el comando `npm start`, el cual levanta la aplicación de react por el puerto 3000.
+1. Ejecutar el comando `npm install` para instalar dependencias.
+2. Back  -> Ejecutar el comando `npm run start-server`, el cual levanta el servidor express por el puerto 8080.
+3. Front -> Ejecutar el comando `npm start`, el cual levanta la aplicación de react por el puerto 3000.
 
 ## Proceso de desarrollo del challenge y consideraciones
 
@@ -65,3 +38,35 @@ Renderiza previamente páginas estáticas para optimizar SEO con react-spa-prere
 2. Se tomó la decisión de tener una interfaz genérica de respuesta del API y del producto a mostar, esto con el fin de no tener problemas de tipos al usar el hook personalizado `useFetchData`
 3. Como el SEO es uno de los puntos requeridos, se optó por usar el pre render, la aplicación de tags y metadata con librerías `react-spa-prerender` y `Helmet`, las cuales se adaptan al tamañp del requerimiento y pueden dar flexibilidad en caso de escalabilidad.
 4. Debido a que se usó `Material UI`, para la maquetación se tomó la decisión de usar flexbox de la misma librería. Como se debia usar SASS y Material UI permite integrar los estilos dentro de la vista, se decide pasar los estilos a clases de CSS.
+
+## Script disponibles
+
+Se puede ejecutar:
+
+### `npm install`
+
+Instala todas las dependencias necesarias para el proyecto.
+
+### `npm start`
+
+Para iniciar la aplicación, corre por el puerto [http://localhost:3000](http://localhost:3000)
+
+### `npm test`
+
+Corre los test configurados en el proyecto.
+
+### `npm run build`
+
+Realiza el empaquetado de la aplicación en la carpeta `build` para desplegar en ambiente productivo.
+
+### `npm run lint`
+
+Se ejecuta el analisis estético del código con la herramienta EsLint.
+
+### `npm run start-server`
+
+Se levanta el servidor configurado con Express
+
+### `npm run postbuild`
+
+Renderiza previamente páginas estáticas para optimizar SEO con react-spa-prerender
