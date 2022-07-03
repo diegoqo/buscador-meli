@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './CajaBusqueda.scss'
-import { Box, IconButton, InputBase, Paper } from '@mui/material';
+import { Box, Grid, IconButton, InputBase, Paper } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 const CajaBusqueda = ({defaultQuery = ""}) => {
@@ -26,10 +26,10 @@ const CajaBusqueda = ({defaultQuery = ""}) => {
     }
 
     return (
-        <Box className={'container-caja-busqueda'}>
-            <Box className={'container-img-buscador'}><img
-                src={"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.8/mercadolibre/logo__small@2x.png"}/></Box>
-            <Box className={'container-input-buscador'}>
+        <Grid container spacing={0.5} className={'container-caja-busqueda'}>
+            <Grid item xs={4} className={'container-img-buscador'}><img
+                src={"https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.8/mercadolibre/logo__small@2x.png"}/></Grid>
+            <Grid item xs={8} className={'container-input-buscador'}>
                 <Paper
                     component="form"
                     className={'paper-input-buscador'}
@@ -46,8 +46,8 @@ const CajaBusqueda = ({defaultQuery = ""}) => {
                         <SearchIcon/>
                     </IconButton>
                 </Paper>
-            </Box>
-        </Box>
+            </Grid>
+        </Grid>
 
     );
 }

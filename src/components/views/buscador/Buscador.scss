@@ -1,5 +1,5 @@
 .img-buscador {
-  height: 40%;
+  width: 100px;
 }
 
 .container-desc-buscador {
@@ -9,4 +9,15 @@
 .container-info-busqueda {
   flex-grow: 1;
   margin: 4%;
+}
+
+.container-imagen-buscador {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-resultados {
+  padding: 20px;
 }

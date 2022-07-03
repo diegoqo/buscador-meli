@@ -63,11 +63,12 @@ const Detalle = () => {
 
 
     return (
-        <><Helmet>
-            <title>Detalle</title>
-            <meta name="description" content="Página de detalle de producto" />
-            <meta name="robots" content="INDEX,FOLLOW" />
-        </Helmet>
+        <>
+            <Helmet>
+                <title>Detalle</title>
+                <meta name="description" content="Página de detalle de producto"/>
+                <meta name="robots" content="INDEX,FOLLOW"/>
+            </Helmet>
             <Box>
                 <CajaBusqueda/>
                 {
@@ -98,7 +99,8 @@ const Detalle = () => {
                                             <Box
                                                 className={'container-items-comprar'}>{`${R.pathOr('Condición no disponible', ['item', 'condition'], productoDetalle)} - ${R.pathOr('No disponible número de', ['item', 'sold_quantity'], productoDetalle)} vendidos`}</Box>
                                             <Box className={'container-items-comprar'}>
-                                                <h3>{R.pathOr('Título no disponible', ['item', 'title'], productoDetalle)}</h3></Box>
+                                                <h3>{R.pathOr('Título no disponible', ['item', 'title'], productoDetalle)}</h3>
+                                            </Box>
                                             <Box className={'container-items-comprar'}>
                                                 <h1>{R.pathOr(undefined, ['item', 'price'], productoDetalle) !== undefined
                                                     && FormatearPrecio(R.pathOr('ARS', ['item', 'price', 'curremcy'], productoDetalle),
@@ -106,7 +108,7 @@ const Detalle = () => {
                                                 </h1>
                                             </Box>
                                             <Box className={'container-button-comprar'}><Button variant="contained"
-                                                                                    onClick={() => alert('Todo: Carrito de compras :)')}>Comprar</Button></Box>
+                                                                                                onClick={() => alert('Todo: Carrito de compras :)')}>Comprar</Button></Box>
                                         </Box>
                                     </Item>
                                 </Grid>

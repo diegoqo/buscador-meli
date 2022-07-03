@@ -1,15 +1,6 @@
 .container-caja-busqueda {
   padding: 8px;
-  margin: 8px;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
   background-color: #fff159;
-  width: 1300px;
 }
 
 .container-img-buscador {
@@ -38,7 +29,6 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 800px;
 }
 
 .input-buscador {

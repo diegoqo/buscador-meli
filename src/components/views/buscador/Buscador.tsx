@@ -14,32 +14,32 @@ const Buscador = () => {
 
 
     return (
-        <Box>
+        <Box sx={{
+            width: 1,
+        }}>
             <><Helmet>
                 <title>Busquedas</title>
                 <meta name="description" content="Página de búsquedas"/>
                 <meta name="robots" content="INDEX,FOLLOW"/>
             </Helmet>
                 <CajaBusqueda key={'caja-busqueda'}/>
-                <Box className={'container-info-busqueda'}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={4}><img className={'img-buscador'} src={logo}/></Grid>
-                        <Grid className={'container-desc-buscador'} item xs={8}><h3>Escribí en el buscador lo que querés
-                            encontrar.
-                        </h3>
-                            <ul>
-                                <li><strong>Escribí tu búsqueda</strong> en el campo que figura en la parte superior de
-                                    la
-                                    pantalla.
-                                </li>
-                                <li><a href="/"> Navegá por categorías de productos</a> para encontrar el producto que
-                                    buscás.
-                                </li>
-                            </ul>
-                        </Grid>
+                <Grid className={'container-resultados'} container spacing={2}>
+                    <Grid className={'container-imagen-buscador'} item xs={4}><img alt={'imagen-buscador'} className={'img-buscador'} src={logo}/></Grid>
+                    <Grid className={'container-desc-buscador'} item xs={8}><h3>Escribí en el buscador lo que querés
+                        encontrar.
+                    </h3>
+                        <ul>
+                            <li><strong>Escribí tu búsqueda</strong> en el campo que figura en la parte superior de
+                                la
+                                pantalla.
+                            </li>
+                            <li><a href="/"> Navegá por categorías de productos</a> para encontrar el producto que
+                                buscás.
+                            </li>
+                        </ul>
                     </Grid>
-                    <Box>
-                    </Box>
+                </Grid>
+                <Box>
                 </Box>
             </>
         </Box>

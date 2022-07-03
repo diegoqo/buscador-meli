@@ -34,10 +34,9 @@ const Productos = () => {
 
     useEffect(() => {
         const resultsApi: IProductos = ConstructorProductos(R.pathOr([], [], response));
-        if(R.pathOr([], ['results'], response).length > 0){
+        if (R.pathOr([], ['results'], response).length > 0) {
             setResults(resultsApi);
-        }
-        else {
+        } else {
             setResults(undefined)
         }
         localStorage.setItem('categorias', JSON.stringify(resultsApi?.categories))
@@ -52,21 +51,22 @@ const Productos = () => {
         <Box>
             <Helmet>
                 <title>Productos</title>
-                <meta name="description" content="Página de productos" />
-                <meta name="robots" content="INDEX,FOLLOW" />
+                <meta name="description" content="Página de productos"/>
+                <meta name="robots" content="INDEX,FOLLOW"/>
             </Helmet>
             <CajaBusqueda defaultQuery={R.pathOr('', [], query)}/>
             {loading && <Box>
-                <CircularProgress />
+                <CircularProgress/>
             </Box>}
             {R.pathOr([], ['items'], results).length > 0 &&
                 <>
                     {R.pathOr([], ['categories'], results).length > 0 &&
-                        <Box className={'container-miga'}><MigaDePan categorias={R.pathOr([], ['categories'], results)}/></Box>}
+                        <Box className={'container-miga'}><MigaDePan
+                            categorias={R.pathOr([], ['categories'], results)}/></Box>}
                     {R.pathOr([], ['items'], results).slice(0, 4).map((it: IItem) =>
                         <>
                             <Paper className={'container-grilla'}
-                                key={`${it.id}-paper`}
+                                   key={`${it.id}-paper`}
                             ><a className={'href-grid'} onClick={() => handleDetail(it.id)} key={`${it.id}-a`}>
                                 <Grid container spacing={2} key={`${it.id}-grid-img-container`}>
                                     <Grid item className={'container-img-producto'} key={`${it.id}-grid-img`}>
