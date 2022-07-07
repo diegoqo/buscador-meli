@@ -14,18 +14,21 @@ const Buscador = () => {
 
 
     return (
-        <Box sx={{
+        <Box className={'buscador'} sx={{
             width: 1,
         }}>
-            <><Helmet>
-                <title>Busquedas</title>
-                <meta name="description" content="Página de búsquedas"/>
-                <meta name="robots" content="INDEX,FOLLOW"/>
-            </Helmet>
+            <>
+                <Helmet>
+                    <title>Busquedas</title>
+                    <meta name="description" content="Página de búsquedas"/>
+                    <meta name="robots" content="INDEX,FOLLOW"/>
+                </Helmet>
                 <CajaBusqueda key={'caja-busqueda'}/>
-                <Grid className={'container-resultados'} container spacing={2}>
-                    <Grid className={'container-imagen-buscador'} item xs={4}><img alt={'imagen-buscador'} className={'img-buscador'} src={logo}/></Grid>
-                    <Grid className={'container-desc-buscador'} item xs={8}><h3>Escribí en el buscador lo que querés
+                <Grid className={'buscador__container-resultados'} container spacing={2}>
+                    <Grid className={'buscador__container-imagen-buscador'} item xs={4}>
+                        <img alt={'imagen-buscador'} className={'buscador__container-imagen-buscador--img'} src={logo}/>
+                    </Grid>
+                    <Grid className={'buscador__container-desc'} item xs={8}><h3>Escribí en el buscador lo que querés
                         encontrar.
                     </h3>
                         <ul>
@@ -43,8 +46,6 @@ const Buscador = () => {
                 </Box>
             </>
         </Box>
-
-
     );
 }
 

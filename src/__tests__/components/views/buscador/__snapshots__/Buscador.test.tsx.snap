@@ -3,20 +3,20 @@
 exports[`Probando el componente Buscador debería mostrar Buscador correctamente 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-0"
+    class="MuiBox-root css-8atqhb"
   >
     <div
-      class="container-caja-busqueda MuiBox-root css-0"
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-0.5 container-caja-busqueda css-125mmfg-MuiGrid-root"
     >
       <div
-        class="container-img-buscador MuiBox-root css-0"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 container-img-buscador css-gj1fbr-MuiGrid-root"
       >
         <img
           src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.8/mercadolibre/logo__small@2x.png"
         />
       </div>
       <div
-        class="container-input-buscador MuiBox-root css-0"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 container-input-buscador css-vok43g-MuiGrid-root"
       >
         <form
           class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 paper-input-buscador css-1ps6pg7-MuiPaper-root"
@@ -57,47 +57,44 @@ exports[`Probando el componente Buscador debería mostrar Buscador correctamente
       </div>
     </div>
     <div
-      class="container-info-busqueda MuiBox-root css-0"
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 container-resultados css-mhc70k-MuiGrid-root"
     >
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-mhc70k-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 container-imagen-buscador css-gj1fbr-MuiGrid-root"
       >
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-gj1fbr-MuiGrid-root"
-        >
-          <img
-            class="img-buscador"
-            src="icon-services-fcs.png"
-          />
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 container-desc-buscador css-vok43g-MuiGrid-root"
-        >
-          <h3>
-            Escribí en el buscador lo que querés encontrar.
-          </h3>
-          <ul>
-            <li>
-              <strong>
-                Escribí tu búsqueda
-              </strong>
-               en el campo que figura en la parte superior de la pantalla.
-            </li>
-            <li>
-              <a
-                href="/"
-              >
-                 Navegá por categorías de productos
-              </a>
-               para encontrar el producto que buscás.
-            </li>
-          </ul>
-        </div>
+        <img
+          alt="imagen-buscador"
+          class="img-buscador"
+          src="icon-services-fcs.png"
+        />
       </div>
       <div
-        class="MuiBox-root css-0"
-      />
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 container-desc-buscador css-vok43g-MuiGrid-root"
+      >
+        <h3>
+          Escribí en el buscador lo que querés encontrar.
+        </h3>
+        <ul>
+          <li>
+            <strong>
+              Escribí tu búsqueda
+            </strong>
+             en el campo que figura en la parte superior de la pantalla.
+          </li>
+          <li>
+            <a
+              href="/"
+            >
+               Navegá por categorías de productos
+            </a>
+             para encontrar el producto que buscás.
+          </li>
+        </ul>
+      </div>
     </div>
+    <div
+      class="MuiBox-root css-0"
+    />
   </div>
 </DocumentFragment>
 `;

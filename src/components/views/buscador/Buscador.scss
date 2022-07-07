@@ -1,23 +1,21 @@
-.img-buscador {
-  width: 100px;
-}
-
-.container-desc-buscador {
-  text-align: left;
-}
-
-.container-info-busqueda {
-  flex-grow: 1;
-  margin: 4%;
+.buscador {
+  &__container-resultados {
+    padding: 20px;
+  }
+  &__container-desc {
+    text-align: left;
+  }
+  &__container-imagen-buscador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &--img {
+      width: 100px;
+    }
+  }
 }
 
 .container-imagen-buscador {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.container-resultados {
-  padding: 20px;
 }

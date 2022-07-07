@@ -3,17 +3,17 @@
 exports[`validate snapshot input search 1`] = `
 <DocumentFragment>
   <div
-    class="container-caja-busqueda MuiBox-root css-0"
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-0.5 container-caja-busqueda css-125mmfg-MuiGrid-root"
   >
     <div
-      class="container-img-buscador MuiBox-root css-0"
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 container-img-buscador css-gj1fbr-MuiGrid-root"
     >
       <img
         src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.8/mercadolibre/logo__small@2x.png"
       />
     </div>
     <div
-      class="container-input-buscador MuiBox-root css-0"
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 container-input-buscador css-vok43g-MuiGrid-root"
     >
       <form
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 paper-input-buscador css-1ps6pg7-MuiPaper-root"

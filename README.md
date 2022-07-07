@@ -30,7 +30,8 @@ Este proyecto fue creado con [Create React App](https://github.com/facebook/crea
 8. Se crea hook `useFetchData` para peticiones genéricas.
 9. Se implementa `Material UI` para Miga de Pan y para la estructura de los componentes.
 10. Se implementa la librería `Helmet` y `react-spa-prerender` para optimizar el SEO en contenido estático y aplicar tags a los componentes contenedores.
-11. Se crean test básicos para cada componente.
+11. Se implementa metodoloía BEM para los estílos.
+12. Se crean test básicos para cada componente.
 
 ## Decisiones
 
